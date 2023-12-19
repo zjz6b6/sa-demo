@@ -10,7 +10,6 @@ task mainJar(type: Jar) {
     }
     from project(':core').sourceSets.main.output
     from project(':compatibility-8').sourceSets.main.output
-    from project(':compatibility-10').sourceSets.main.output
     from project(':compatibility-13').sourceSets.main.output
     baseName 'sa-jdwp'
 }
@@ -18,7 +17,6 @@ task mainJar(type: Jar) {
 task sourceJar(type: Jar) {
     from project(':core').sourceSets.main.java
     from project(':compatibility-8').sourceSets.main.java
-    from project(':compatibility-10').sourceSets.main.java
     from project(':compatibility-13').sourceSets.main.java
     baseName 'sa-jdwp-sources'
 }

@@ -1,17 +1,17 @@
-sourceCompatibility = '1.6'
-targetCompatibility = '1.6'
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
 
 compileJava.options.fork = true
-def jdk16Home = System.getenv("JDK_1_6")
-if (hasProperty("JDK_1_6")) {
-    jdk16Home = JDK_1_6
+def jdk18Home = System.getenv("JDK_1_8")
+if (hasProperty("JDK_1_8")) {
+    jdk18Home = JDK_1_8
 }
-if (jdk16Home == null) {
-    throw new GradleException('JDK_1_6 environment variable is not defined')
+if (jdk18Home == null) {
+    throw new GradleException('JDK_1_8 environment variable is not defined')
 }
-compileJava.options.forkOptions.executable = "$jdk16Home/bin/javac"
+compileJava.options.forkOptions.executable = "$jdk18Home/bin/javac"
 
 dependencies {
-    compile files("$jdk16Home/lib/tools.jar")
-    compile files("$jdk16Home/lib/sa-jdi.jar")
+    compile files("$jdk18Home/lib/tools.jar")
+    compile files("$jdk18Home/lib/sa-jdi.jar")
 }

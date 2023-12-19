@@ -24,22 +24,18 @@ class CompatibilityHelper {
     static {
         Compatibility instance = null;
         String version = System.getProperty("java.specification.version");
-        if (version.equals("1.6") || version.equals("1.7")) {
-            instance = new CompatibilityHelper6();
+
+        String compatibility = "13";
+        if (version.equals("1.8")) {
+            compatibility = "8";
         }
-        else {
-            String compatibility = "13";
-            if (version.equals("1.8") || version.equals("9")) {
-                compatibility = "8";
-            } else if (version.equals("10") || version.equals("11") || version.equals("12")) {
-                compatibility = "10";
-            }
-            try {
-                instance = (Compatibility) Class.forName("com.jetbrains.sa.jdi.CompatibilityHelper" + compatibility).getDeclaredConstructor().newInstance();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+
+        try {
+            instance = (Compatibility) Class.forName("com.jetbrains.sa.jdi.CompatibilityHelper" + compatibility).getDeclaredConstructor().newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
         INSTANCE = instance;
     }
 }
